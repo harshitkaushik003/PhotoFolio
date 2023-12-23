@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Diphylleia&display=swap");
 .btn {
+  margin-top: 20px;
   width: 100px;
   height: 50px;
   background-color: white;
@@ -10,4 +11,11 @@
   position: relative;
   left: 90%;
   cursor: pointer;
+}
+
+.albumListDiv {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }/*# sourceMappingURL=AlbumList.module.css.map */

@@ -1,1 +1,1 @@
-{"version":3,"sources":["AlbumList.module.scss","AlbumList.module.css"],"names":[],"mappings":"AAAQ,+EAAA;AACR;EACI,YAAA;EACA,YAAA;EACA,uBAAA;EACA,sBAAA;EACA,mBAAA;EACA,yBAAA;EACA,gBAAA;EACA,kBAAA;EACA,SAAA;EACA,eAAA;ACCJ","file":"AlbumList.module.css"}
+{"version":3,"sources":["AlbumList.module.scss","AlbumList.module.css"],"names":[],"mappings":"AAAQ,+EAAA;AACR;EACI,gBAAA;EACA,YAAA;EACA,YAAA;EACA,uBAAA;EACA,sBAAA;EACA,mBAAA;EACA,yBAAA;EACA,gBAAA;EACA,kBAAA;EACA,SAAA;EACA,eAAA;ACCJ;;ADEA;EACI,gBAAA;EACA,aAAA;EACA,eAAA;EACA,uBAAA;ACCJ","file":"AlbumList.module.css"}

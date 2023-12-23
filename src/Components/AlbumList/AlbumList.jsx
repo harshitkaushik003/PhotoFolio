@@ -1,18 +1,37 @@
 import { useEffect, useState } from "react";
 import { db } from "../../FirebaseInit";
 import AlbumForm from "../AlbumForm/AlbumForm";
+import Album from "../Album/Album";
 import styles from './AlbumList.module.css';
-import { addDoc, collection, onSnapshot, setDoc } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, onSnapshot, setDoc} from "firebase/firestore";
 
 const AlbumList = () => {
 
     const [showForm, setShowForm] = useState(false);
-    const [albums, setAlbums] = useState();
+    const [albums, setAlbums] = useState([]);
+    const [albumToEdit, setAlbumToEdit] = useState(null);
     async function addAlbum(name){
-        const albRef = await addDoc(collection(db, "albums"), {
+        await addDoc(collection(db, "albums"), {
             name: name,
             images: []
         })
+    }
+
+    async function handleDelete(id){
+        const docRef = doc(db, "albums", id);
+        await deleteDoc(docRef);
+    }
+    
+    async function setEdit(id){
+        
+        const index = albums.findIndex(album => album.id === id);
+        setAlbumToEdit(albums[index]);
+        setShowForm(true);
+    }
+
+    async function handleEdit(id, album){
+        await setDoc(doc(db, "albums", id), album);
+        setShowForm(false);
     }
 
     useEffect(()=>{
@@ -22,14 +41,18 @@ const AlbumList = () => {
                 ...doc.data()
             }))
             setAlbums(albums);
-            console.log("onEffect", albums);
         });
     }, []);
 
     return(
         <>
-        {showForm ? <AlbumForm addAlbum={addAlbum}/> : ""}
+        {showForm ? <AlbumForm addAlbum={addAlbum} albumToEdit={albumToEdit} handleEdit={handleEdit}/> : ""}
         <input type="button" value={showForm ? "Cancel" : "Add Album"} className={styles.btn} onClick={() => setShowForm(!showForm)}/>
+        <div className={styles.albumListDiv}>
+            {albums.map((album) => (
+                <Album name={album.name} id={album.id} handleDelete={handleDelete} setEdit={setEdit} />
+            ))}
+        </div>
         </>
     )
 }
