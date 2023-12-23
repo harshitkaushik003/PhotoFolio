@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Diphylleia&display=swap");
+.btn {
+  width: 6.25rem;
+  height: 3rem;
+  border-radius: 10px;
+  color: white;
+  font-size: 20px;
+  font-family: "Diphylleia";
+  border: none;
+  cursor: pointer;
+}/*# sourceMappingURL=Button.module.css.map */

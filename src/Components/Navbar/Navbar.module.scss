@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap');
+.navList{
+    margin-left: 15px;
+    display: flex;
+    .items{
+        list-style-type: none;
+        margin-right: 10px;
+        img{
+            height: 50px;
+            width: 50px;
+        }
+        span{
+            font-family: "Rubik Doodle Shadow";
+            font-size: 30px;
+            color: black;
+            font-weight: bolder;
+            position: relative;
+            top: 5px;
+        }
+    }
+}

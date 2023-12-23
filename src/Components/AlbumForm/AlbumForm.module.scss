@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Diphylleia&display=swap');
+.albumForm{
+    h2{
+        font-family: "Diphylleia";
+    }
+    display: flex;
+    width: 70%;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.04);
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    box-shadow: -2px 11px 42px -4px #E2C2FF;
+    .name{
+        height: 50px;
+        width: 70%;
+        border-radius: 50px;
+        border-width:1px;
+        border-style: double;
+        padding-left: 10px;
+        font-family: "Diphylleia";
+        font-size: 15px;
+        margin-right: 20px;
+    }
+    .btn{
+        
+        width: 230px;
+        display: flex;
+        justify-content:space-between;
+    }
+}
