@@ -4,13 +4,15 @@ import AlbumForm from "../AlbumForm/AlbumForm";
 import Album from "../Album/Album";
 import styles from './AlbumList.module.css';
 import { addDoc, collection, deleteDoc, doc, onSnapshot, setDoc} from "firebase/firestore";
+import ImageList from "../ImageList/ImageList";
 
 const AlbumList = () => {
 
     const [showForm, setShowForm] = useState(false);
     const [albums, setAlbums] = useState([]);
     const [albumToEdit, setAlbumToEdit] = useState(null);
-    async function addAlbum(name){
+    const [showImage, setShowImage] = useState(null);
+    async function addAlbum(name){ 
         await addDoc(collection(db, "albums"), {
             name: name,
             images: []
@@ -34,6 +36,11 @@ const AlbumList = () => {
         setShowForm(false);
     }
 
+    function handleShowImage(id){
+        const index = albums.findIndex(album => album.id === id);
+        setShowImage(albums[index]);
+    }
+
     useEffect(()=>{
         const unsub = onSnapshot(collection(db, "albums"), (snapShot)=>{
             const albums = snapShot.docs.map((doc)=>({
@@ -46,14 +53,19 @@ const AlbumList = () => {
 
     return(
         <>
-        {showForm ? <AlbumForm addAlbum={addAlbum} albumToEdit={albumToEdit} handleEdit={handleEdit}/> : ""}
-        <input type="button" value={showForm ? "Cancel" : "Add Album"} className={styles.btn} onClick={() => setShowForm(!showForm)}/>
-        <div className={styles.albumListDiv}>
-            {albums.map((album) => (
-                <Album name={album.name} id={album.id} handleDelete={handleDelete} setEdit={setEdit} />
-            ))}
-        </div>
-        </>
+        {!showImage?(
+            <>
+            {showForm ? <AlbumForm addAlbum={addAlbum} albumToEdit={albumToEdit} handleEdit={handleEdit}/> : ""}
+            <input type="button" value={showForm ? "Cancel" : "Add Album"} className={styles.btn} onClick={() => setShowForm(!showForm)}/>
+            <div className={styles.albumListDiv}>
+                {albums.map((album) => (
+                    <Album name={album.name} id={album.id} handleDelete={handleDelete} setEdit={setEdit} handleShowImage={handleShowImage}/>
+                ))}
+            </div>
+            </>
+        ) : <ImageList openedAlbum={showImage} />}
+        
+        </> 
     )
 }
 

@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Diphylleia&display=swap");
+.imageCard {
+  margin: 20px;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid red;
+  border-radius: 10px;
+}
+.imageCard .imageContainer {
+  width: 100%;
+  height: 70%;
+}
+.imageCard .imageContainer img {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.imageCard .imageName {
+  width: 100%;
+  height: 30%;
+  padding-left: 10px;
+}
+.imageCard .imageName span {
+  font-family: "Diphylleia";
+  font-size: 20px;
+}/*# sourceMappingURL=Image.module.css.map */

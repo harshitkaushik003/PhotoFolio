@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Diphylleia&display=swap');
+.imageForm{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    background-color: rgba(0, 0, 0, 0.04);
+    box-shadow: -2px 11px 42px -4px #507DBC;
+    border-radius: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    h2{
+        width: 20%;
+        font-family: "Diphylleia";
+    }
+    .inputs{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        .inputBox{
+            height: 40px;
+            margin-bottom: 10px;
+            border-radius: 50px;
+            border: 1px double black;
+            padding-left: 20px;
+            font-family: "Diphylleia";
+            font-size: 16px;
+        }
+    }
+    .btns{
+        width: 20%;
+        display: flex;
+        justify-content: space-between;
+    }
+}

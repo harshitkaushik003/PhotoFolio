@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Diphylleia&display=swap");
+h1 span {
+  font-family: "Diphylleia";
+  margin-left: 30px;
+}
+
+.btn {
+  margin-top: 20px;
+  width: 100px;
+  height: 50px;
+  background-color: white;
+  border: 2px solid blue;
+  border-radius: 10px;
+  font-family: "Diphylleia";
+  font-weight: 900;
+  position: relative;
+  left: 90%;
+  cursor: pointer;
+}
+
+.imageList {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}/*# sourceMappingURL=ImageList.module.css.map */
