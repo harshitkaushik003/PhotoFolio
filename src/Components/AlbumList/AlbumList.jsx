@@ -20,8 +20,10 @@ const AlbumList = () => {
     }
 
     async function handleDelete(id){
+        setAlbumToEdit(null);
         const docRef = doc(db, "albums", id);
         await deleteDoc(docRef);
+        
     }
     
     async function setEdit(id){
@@ -39,6 +41,10 @@ const AlbumList = () => {
     function handleShowImage(id){
         const index = albums.findIndex(album => album.id === id);
         setShowImage(albums[index]);
+    }
+
+    function handleBack(){
+        setShowImage(null);
     }
 
     useEffect(()=>{
@@ -63,7 +69,7 @@ const AlbumList = () => {
                 ))}
             </div>
             </>
-        ) : <ImageList openedAlbum={showImage} />}
+        ) : <ImageList openedAlbum={showImage} handleBack={handleBack} />}
         
         </> 
     )
