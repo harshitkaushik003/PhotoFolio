@@ -1,3 +1,4 @@
+// component Imports 
 import AlbumList from './Components/AlbumList/AlbumList';
 import Navbar from './Components/Navbar/Navbar'
 function App() {

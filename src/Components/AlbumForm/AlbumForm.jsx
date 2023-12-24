@@ -9,10 +9,9 @@ const AlbumForm = ({ addAlbum, albumToEdit, handleEdit, notifyAdd }) => {
     
     function handleSubmit(e) {
         e.preventDefault();
+        // checking if editing or creating
         if(!albumToEdit){
-            console.log("create clicked");
             addAlbum(nameRef.current.value);
-            
             nameRef.current.value = "";
         }else{
             const album = {
@@ -31,6 +30,7 @@ const AlbumForm = ({ addAlbum, albumToEdit, handleEdit, notifyAdd }) => {
         nameRef.current.value = "";
     }
 
+    // if editing, the form should autofill
     useEffect(()=>{
         if(albumToEdit){
             nameRef.current.value = albumToEdit.name;

@@ -1,15 +1,21 @@
+// importing hooks 
 import { useState } from "react"
+// importing components and styles 
 import ImageForm from "../ImageForm/ImageForm"
 import styles from './ImageList.module.css'
+
+// importing firebase elements 
 import { db } from "../../FirebaseInit";
 import { doc, setDoc } from "firebase/firestore";
+
 import Image from "../Image/Image";
 import ControlledCarousel from "../Caraousel/Caraousel";
 
 function ImageList({openedAlbum, handleBack, notifyAdd}){
-    const [showForm, setShowForm] = useState(false);
-    const [imageToEdit, setImageToEdit] = useState(null);
-    const [cIndex, setcIndex] = useState(-1);
+    const [showForm, setShowForm] = useState(false); //showing form or not
+    const [imageToEdit, setImageToEdit] = useState(null); //setting image to edit
+    const [cIndex, setcIndex] = useState(-1); //index to be used by carousel
+    
     function setIndex(index){
         setcIndex(index);
     }
