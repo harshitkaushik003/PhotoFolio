@@ -53,6 +53,7 @@ function ImageList({openedAlbum, handleBack}){
             <h1><span>{openedAlbum.name}</span></h1>
             {showForm ? <ImageForm addImage={addImage} imageToEdit={imageToEdit} handleEdit={handleEdit}  /> : ""}
             <input type="button" value={showForm ? "Cancel" : "Add Image"} className={styles.btn} onClick={() => setShowForm(!showForm)} />
+            <h1 className={styles.msg}><span>{openedAlbum.images.length ? "" : "No image to display"}</span></h1>
             <div className={styles.imageList}>
                 {openedAlbum.images.map((image, index)=>(
                     <Image index={index} image={image} handleDelete={handleDelete } setEdit={setEdit} />
