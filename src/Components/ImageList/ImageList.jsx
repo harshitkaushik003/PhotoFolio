@@ -4,10 +4,15 @@ import styles from './ImageList.module.css'
 import { db } from "../../FirebaseInit";
 import { doc, setDoc } from "firebase/firestore";
 import Image from "../Image/Image";
+import ControlledCarousel from "../Caraousel/Caraousel";
+
 function ImageList({openedAlbum, handleBack, notifyAdd}){
     const [showForm, setShowForm] = useState(false);
     const [imageToEdit, setImageToEdit] = useState(null);
-    
+    const [cIndex, setcIndex] = useState(-1);
+    function setIndex(index){
+        setcIndex(index);
+    }
     async function addImage(name, url){
         openedAlbum.images.push({
             name: name,
@@ -56,9 +61,16 @@ function ImageList({openedAlbum, handleBack, notifyAdd}){
             <h1 className={styles.msg}><span>{openedAlbum.images.length ? "" : "No image to display"}</span></h1>
             <div className={styles.imageList}>
                 {openedAlbum.images.map((image, index)=>(
-                    <Image index={index} image={image} handleDelete={handleDelete } setEdit={setEdit} />
+                    <Image index={index} image={image} handleDelete={handleDelete } setEdit={setEdit} setIndex={setIndex}/>
                 ))}
             </div>
+            {cIndex!==-1 ? (
+                <div className={styles.carouselDiv}>
+                    <div className={styles.close} onClick={() => setIndex(-1)}></div>
+                    <ControlledCarousel images={openedAlbum.images} index={cIndex} setIndex={setIndex}/>
+                </div>
+            ) : ""}
+            
         </>
     )
 }
