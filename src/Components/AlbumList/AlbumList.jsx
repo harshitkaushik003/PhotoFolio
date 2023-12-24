@@ -5,9 +5,18 @@ import Album from "../Album/Album";
 import styles from './AlbumList.module.css';
 import { addDoc, collection, deleteDoc, doc, onSnapshot, setDoc} from "firebase/firestore";
 import ImageList from "../ImageList/ImageList";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AlbumList = () => {
-
+    const notifyAdd = (text) =>{
+        if(!albumToEdit){
+            toast("Added " + text);
+        }else{
+            toast("Edited " + text);
+        }
+        
+    }
     const [showForm, setShowForm] = useState(false);
     const [albums, setAlbums] = useState([]);
     const [albumToEdit, setAlbumToEdit] = useState(null);
@@ -59,9 +68,10 @@ const AlbumList = () => {
 
     return(
         <>
+        <ToastContainer/>
         {!showImage?(
             <>
-            {showForm ? <AlbumForm addAlbum={addAlbum} albumToEdit={albumToEdit} handleEdit={handleEdit}/> : ""}
+            {showForm ? <AlbumForm addAlbum={addAlbum} albumToEdit={albumToEdit} handleEdit={handleEdit} notifyAdd={notifyAdd}/> : ""}
             <input type="button" value={showForm ? "Cancel" : "Add Album"} className={styles.btn} onClick={() => setShowForm(!showForm)}/>
             <div className={styles.albumListDiv}>
                 {albums.map((album) => (
@@ -69,7 +79,7 @@ const AlbumList = () => {
                 ))}
             </div>
             </>
-        ) : <ImageList openedAlbum={showImage} handleBack={handleBack} />}
+        ) : <ImageList openedAlbum={showImage} handleBack={handleBack} notifyAdd = {notifyAdd} />}
         
         </> 
     )

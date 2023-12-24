@@ -4,7 +4,7 @@ import styles from './ImageList.module.css'
 import { db } from "../../FirebaseInit";
 import { doc, setDoc } from "firebase/firestore";
 import Image from "../Image/Image";
-function ImageList({openedAlbum, handleBack}){
+function ImageList({openedAlbum, handleBack, notifyAdd}){
     const [showForm, setShowForm] = useState(false);
     const [imageToEdit, setImageToEdit] = useState(null);
     
@@ -51,7 +51,7 @@ function ImageList({openedAlbum, handleBack}){
         <>
             <div className={styles.icon} onClick={handleBack}></div>
             <h1><span>{openedAlbum.name}</span></h1>
-            {showForm ? <ImageForm addImage={addImage} imageToEdit={imageToEdit} handleEdit={handleEdit}  /> : ""}
+            {showForm ? <ImageForm addImage={addImage} imageToEdit={imageToEdit} handleEdit={handleEdit} notifyAdd = {notifyAdd} /> : ""}
             <input type="button" value={showForm ? "Cancel" : "Add Image"} className={styles.btn} onClick={() => setShowForm(!showForm)} />
             <h1 className={styles.msg}><span>{openedAlbum.images.length ? "" : "No image to display"}</span></h1>
             <div className={styles.imageList}>

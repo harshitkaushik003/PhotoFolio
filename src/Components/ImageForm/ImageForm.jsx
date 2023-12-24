@@ -1,7 +1,7 @@
 import styles from './ImageForm.module.css'
 import Button from '../Button/Button'
 import { useEffect, useRef } from 'react';
-export default function ImageForm({addImage, imageToEdit, handleEdit}){
+export default function ImageForm({addImage, imageToEdit, handleEdit, notifyAdd}){
     const nameRef = useRef();
     const urlRef = useRef();
     function handleSubmit(e){
@@ -17,7 +17,7 @@ export default function ImageForm({addImage, imageToEdit, handleEdit}){
             let url = urlRef.current.value;
             handleEdit(imageToEdit.index, name, url);
         }
-        
+        notifyAdd("Image");
     }
 
     useEffect(()=>{

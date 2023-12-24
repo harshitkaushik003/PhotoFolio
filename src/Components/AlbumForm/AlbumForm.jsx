@@ -2,7 +2,9 @@ import { useEffect, useRef } from 'react';
 import Button from '../Button/Button';
 import styles from './AlbumForm.module.css';
 
-const AlbumForm = ({ addAlbum, albumToEdit, handleEdit }) => {
+
+const AlbumForm = ({ addAlbum, albumToEdit, handleEdit, notifyAdd }) => {
+
     const nameRef = useRef();
     
     function handleSubmit(e) {
@@ -10,6 +12,7 @@ const AlbumForm = ({ addAlbum, albumToEdit, handleEdit }) => {
         if(!albumToEdit){
             console.log("create clicked");
             addAlbum(nameRef.current.value);
+            
             nameRef.current.value = "";
         }else{
             const album = {
@@ -17,9 +20,9 @@ const AlbumForm = ({ addAlbum, albumToEdit, handleEdit }) => {
                 name: nameRef.current.value,
                 images: albumToEdit.images
             };
-            handleEdit(albumToEdit.id, album);
-            
+            handleEdit(albumToEdit.id, album); 
         }
+        notifyAdd("Albums");
         
     }
 
